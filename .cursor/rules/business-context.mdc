@@ -1,0 +1,438 @@
+---
+# Business context - applied contextually when relevant
+---
+# Technical Design Document — “Knight’s Journal: ACT Game (The Happiness Trap)”
+
+Version: 2.0 • Date: 11.11.2025 • Language: EN
+
+---
+
+## 0) Vision & Concept
+
+**Vision.** “The Noble Knight” — a journaling RPG where **progress = living by your values** through ACT (Acceptance & Commitment Therapy): acceptance, defusion, present-moment contact, self-as-context, clarity of values, and committed action.
+
+**Genre.** Habit-tracker / life-sim with RPG progression and a mindfulness foundation.
+
+**Core theme.** You are a **medieval knight** (archetype similar to Jon Snow) who defeats daily “enemies” not with a sword, but with **values, awareness, and psychological flexibility.**
+
+---
+
+## 1) Core Goals
+
+1. Daily ACT-based practice through micro-quests and reflection.
+2. Systematic development of ACT skills and life domains.
+3. Soft gamified motivation: ranks, titles, streaks, value alignment.
+4. Supportive handling of setbacks (“steps aside”) via recovery quests.
+5. Cultivation of **psychological flexibility** and consistent alignment with personal values.
+
+---
+
+## 2) Key Features (Player-Facing)
+
+1. **Daily Quests** — short actions (2–20 min) tagged with values, skills, and life domains.
+2. **Reflection Rituals** — evening check-ins with ACT-style questions.
+3. **Values Map** — 4 primary values (Health, Love, Work, Play) with customizable sub-values and progression.
+4. **ACT Skillset** — six core ACT skills: Defusion, Acceptance, Present Moment, Self-as-Context, Values, Committed Action.
+5. **Life Spheres** — Programming, Psychology, Health (includes Sport & Nutrition), Spirit.
+6. **“Steps Aside” & Recovery Quests** — gentle feedback without shame, adaptive difficulty.
+7. **Knight’s Narrative** — daily “enemy” representing distractions or avoidance patterns.
+8. **ACT Combo (1–5)** — Define, Allow, Expand, Contact, Commit; embedded in quick check-ins.
+9. **OCF Compass** — tracks Openness, Curiosity, Flexibility (psychological flexibility metric).
+10. **User Goals** — short- and mid-term behavioral or outcome goals linked to values.
+11. **User Journal** — free-text entries, date filters, value tags, PDF/CSV export.
+12. **Ranks & Splits** — monthly ladder (Iron→Diamond) + quarterly titles (Page→Paladin).
+13. **Reports & Insights** — weekly/monthly/quarterly dashboards and “Knight’s Scrolls.”
+
+---
+
+## 3) Core Gameplay Loop
+
+**Morning:**
+
+* Player swears the **Knight’s Oath** (selects main value of the day).
+* “Enemy of the Day” appears with weaknesses linked to ACT Combo steps.
+* Choose 1–3 quests for the day.
+
+**Daytime:**
+
+* Perform quests (2–20 min) using timers and quick emotional/mindfulness check-ins.
+* Optional ACT Combo 1–5 to handle distractions or “enemy attacks.”
+
+**Evening:**
+
+* Complete ACT-style reflection (What happened? What mattered?).
+* Record “steps aside” events and recovery.
+* Receive XP, milestones (30/60/90/110%), and rewards.
+* Generate “Knight’s Scroll” with soft insights and guidance.
+
+---
+
+## 4) Narrative Layer — “Enemies of the Day”
+
+Enemies symbolize inner challenges, e.g.:
+
+* *Sirens of Impulse* (instant gratification),
+* *Fog of Distraction*,
+* *Armor of Avoidance*,
+* *Cloak of Overthinking*,
+* *Chaos of Unclear Goals*.
+
+Each day one “boss” is generated based on recent patterns (distraction, avoidance, etc.). Defeating the boss involves completing the ACT Combo and staying aligned with your chosen value.
+
+---
+
+## 5) ACT Combo 1–5
+
+1. **Define & Name** – Identify the thought/urge (name the enemy).
+2. **Allowing** – Give permission to feel without resistance.
+3. **Expansion / Make Room** – Breathe and hold the emotion in awareness.
+4. **Contact with the Present Moment** – Return to your senses, ground in the now.
+5. **Committed Action** – Take a small step toward your chosen value.
+
+Completing all 5 steps grants a short-term buff (Mindfulness bonus).
+
+---
+
+## 6) User Goals & Motivation
+
+* **Behavioral Goals:** frequency/routine-based (e.g., “Mindful eating 4×/week”).
+* **Outcome Goals:** results-based (e.g., “Run 5km in 30 min”), presented as process-focused.
+* Weekly goal progress grants Split Points (SP) and seasonal Rank Points (RP).
+* Full goal completion unlocks special cosmetics and badges.
+
+---
+
+## 7) Journal & Reflection
+
+* Users can create and edit daily journal entries.
+* Filter entries by date range, value, or tags.
+* View historical reflections (week/month/quarter/year).
+* Export journal or period summaries to PDF/CSV.
+
+---
+
+## 8) Reports & Insights
+
+* Timeline charts for skill, value, and domain progression.
+* Heatmaps for habits and quest completion.
+* Comparative trend graphs (week/month/quarter).
+* “Knight’s Scroll” with ACT-based narrative summaries.
+
+---
+
+## 9) Ranks, Splits & KDA Metric
+
+**Splits:** Monthly seasons (Iron → Diamond). Hidden MMR: *Gallantry Rating (GR)*.
+
+**KDA (ACT adaptation):**
+
+* **K (Keeps):** successful value-aligned actions.
+* **D (Drifts):** steps aside (penalty reduced if recovery quest done).
+* **A (Assists):** helping others (family, friends, colleagues).
+
+`KDA = (K + 0.5 × A) / max(1, D)`
+
+Split Points (SP) are earned daily based on KDA and consistency. Split rank bonuses convert into RP for quarterly titles.
+
+---
+
+## 10) OCF Compass & Psychological Flexibility
+
+**Formula:** Presence + Acceptance + Valued/Committed Action = Psychological Flexibility.
+
+Visual compass (three sectors: Openness, Curiosity, Flexibility) fills during ACT Combo steps.
+
+**PF Bonus (soft multiplier):** increases XP for mindful quest completion.
+
+---
+
+## 11) Core Screens
+
+| Screen                 | Purpose                                          |
+| ---------------------- | ------------------------------------------------ |
+| **Home / Today**       | Value emblem, milestones, list of quests.        |
+| **Quest / Check-in**   | Timer, emotions, ACT Combo interface.            |
+| **Reflection**         | Evening ACT review, XP, rewards, insights.       |
+| **Values**             | 4 main values, sub-values, levels.               |
+| **Skills (ACT)**       | Skill progression, perks, explanations.          |
+| **Goals**              | Active goals, progress bars, add/edit interface. |
+| **Journal**            | Personal notes with filters and export.          |
+| **Reports**            | Charts, heatmaps, “Knight’s Scroll.”             |
+| **Rank / Split**       | League progression, titles, bonuses.             |
+| **Profile / Settings** | Preferences, privacy, localization.              |
+
+---
+
+### 11.1 Home / Today
+
+**Goal:** Start the day with clarity and momentum.
+
+**Content blocks**
+
+* **Knight’s Oath banner:** today’s primary value (tap to change). Microcopy: *“Today I ride under the banner of [Value].”*
+* **Enemy of the Day card:** name, brief description, suggested **ACT Combo** (weaknesses). CTA: *“Face enemy”* → opens Combo.
+* **Milestones bar:** 0 / 30 / 60 / 90 / 110% with chest icons.
+* **Today’s Quests list:** 1–3 selected quests (duration, difficulty, tags: Value / ACT skill / Sphere / Activity like **Sport** or **Nutrition**). Quick actions: Start ▸, Edit, Swap.
+* **Quick Add:** add a custom 2–20 min quest (templates for Sport/Nutrition).
+* **Recovery ribbon (conditional):** if a drift was logged → *“Return to the Path”* quest appears.
+* **Streak & KDA mini-widget:** streak days, KDA of last 7 days, PF icon.
+
+**States & interactions**
+
+* Empty state: prompt 3 suggested quests with a *“Roll again”* button.
+* Long‑press on a quest: quick edit duration/difficulty.
+* Swipe right = Start, swipe left = Replace.
+* Accessibility: large hit areas (≥44pt), dynamic type, haptics on milestone unlock.
+
+---
+
+### 11.2 Quest / Check‑in
+
+**Goal:** Execute a micro‑quest with mindful awareness.
+
+**Content blocks**
+
+* **Timer** (2/5/10/20 min) + progress ring.
+* **ACT Combo mini-strip** (1–5): each step tappable with 1‑sentence guidance.
+* **State quick‑tags:** emotion, urge, thought‑hook (1 tap each).
+* **Alignment slider:** *“How much did this serve [Value]?”* (0–100%).
+* **Controls:** Start/Pause/Done; *Mark Drift*; *Add Note*.
+
+**States & interactions**
+
+* If *Mark Drift* → offer **Recovery Quest** and show compassionate microcopy.
+* Completing all 5 combo steps grants **Mindfulness bonus** badge.
+* Offline mode cue; auto‑save on exit; resume where left off.
+
+---
+
+### 11.3 Reflection (Evening)
+
+**Goal:** Integrate the day through ACT and assign rewards.
+
+**Flow**
+
+1. **Context:** What happened? (short text chips)
+2. **Experience:** Body / thoughts / feelings (selector)
+3. **Value check:** Which value mattered most?
+4. **Committed next step:** small action for tomorrow
+5. **Gratitude x1**
+6. **Drifts & Recovery:** log any steps aside; mark recovery quests done
+7. **Rewards:** XP, milestone chests, insights card (*Knight’s Scroll*)
+
+**Microcopy tone:** warm, non‑shaming; celebrate noticing and returning.
+
+---
+
+### 11.4 Values
+
+**Goal:** Make values salient and trainable.
+
+**Content blocks**
+
+* **Four pillars:** Health, Love, Work, Play (cards with icons and brief copy).
+* **Weights & levels:** adjust importance; see level progress (L1–L10).
+* **Sub‑values:** add/edit (e.g., Parenting under Love).
+* **Impact hints:** how this value nudges suggestions and rewards.
+* **Set as Oath:** CTA to pick as tomorrow’s banner.
+
+**States:** empty sub‑values state with examples from the ACT library.
+
+---
+
+### 11.5 Skills (ACT)
+
+**Goal:** Teach and reinforce ACT skills.
+
+**Content blocks**
+
+* Six skill tiles with level and short effect (e.g., *Self‑as‑Context: reduces drift penalties*).
+* **Practice library:** micro‑exercises mapped to each skill (2–10 min).
+* **Perks preview:** next milestone effects.
+
+**Interaction:** starting a micro‑exercise creates a timed mini‑quest.
+
+---
+
+### 11.6 Goals
+
+**Goal:** Connect quests to meaningful outcomes.
+
+**Content blocks**
+
+* **Tabs:** Active • Upcoming • Completed.
+* **Cards:** title, linked value, cadence/metric, progress ring, week streak.
+* **CTA:** Add Goal (Behavioral/Outcome, timeframe 1–12 weeks).
+* **Weekly review nudge:** *“You’ve hit 80% — claim Split bonus.”*
+
+**Edit goals:** adjust cadence, pause, mark milestones.
+
+---
+
+### 11.7 Journal
+
+**Goal:** Provide a safe space for free‑form reflection.
+
+**Content blocks**
+
+* **Composer:** title (optional), body, tags (values, activities: Sport/Nutrition, mood).
+* **Date picker** (default = today).
+* **Filter & search:** by date range (month/quarter/year/custom), by value, by tag.
+* **List view:** timeline with previews; tap → full entry.
+* **Export:** PDF/CSV for selected range.
+
+**Privacy:** optional lock for sensitive entries.
+
+---
+
+### 11.8 Reports
+
+**Goal:** Turn data into gentle guidance.
+
+**Content blocks**
+
+* **Period selector:** Week • Month • Quarter • Year • Custom.
+* **KPIs:** completion rate, value alignment, streak, KDA, PF sessions.
+* **Trends:** line charts; **Heatmap** of quest completion.
+* **Breakdowns:** by value, by sphere, by activity (**Sport**, **Nutrition**) and by enemy type.
+* **Knight’s Scroll:** narrative insights and suggestions for next period.
+* **Export:** PDF / CSV.
+
+---
+
+### 11.9 Rank / Split
+
+**Goal:** Provide seasonal momentum without pressure.
+
+**Content blocks**
+
+* **League ladder:** Iron→Diamond with division progress bar.
+* **KDA panel:** last 7 days K, D, A; definitions tooltip.
+* **Split points (SP):** daily earnings; promotion series indicator.
+* **Season bonuses:** RP carry‑over to quarterly titles.
+* **Recent victories:** boss defeats, value streaks.
+
+**Tone:** celebratory, never shaming; always suggest recovery.
+
+---
+
+### 11.10 Profile / Settings
+
+**Goal:** Safety, personalization, accessibility.
+
+**Content blocks**
+
+* Profile: avatar/emblem, display name, frame/banner selection.
+* Preferences: language (RU/EN), timezone, units, reminders schedule.
+* Privacy: local lock (PIN/biometric), data export/delete.
+* Notifications: morning oath, mid‑day check‑ins, evening reflection, drift coaching.
+* About: ACT basics, crisis resources, credits.
+
+**Accessibility:** dynamic text, screen reader labels, high‑contrast theme option.
+
+---
+
+------------------- | ------------------------------------------------ |
+| **Home / Today**       | Value emblem, milestones, list of quests.        |
+| **Quest / Check-in**   | Timer, emotions, ACT Combo interface.            |
+| **Reflection**         | Evening ACT review, XP, rewards, insights.       |
+| **Values**             | 4 main values, sub-values, levels.               |
+| **Skills (ACT)**       | Skill progression, perks, explanations.          |
+| **Goals**              | Active goals, progress bars, add/edit interface. |
+| **Journal**            | Personal notes with filters and export.          |
+| **Reports**            | Charts, heatmaps, “Knight’s Scroll.”             |
+| **Rank / Split**       | League progression, titles, bonuses.             |
+| **Profile / Settings** | Preferences, privacy, localization.              |
+
+---
+
+## 12) Implementation Roadmap (Feature Phases)
+
+### Phase 1 — **MVP (Core Loop)**
+
+* Morning quest selection (1–3).
+* Quest execution & check-ins.
+* Evening reflection (ACT form).
+* Value emblem display.
+* Milestone rewards (30/60/90/110%).
+
+### Phase 2 — **Values & ACT Skills**
+
+* Values page (Health/Love/Work/Play).
+* ACT skill leveling & perks.
+* “Steps Aside” system & recovery quests.
+
+### Phase 3 — **Knight Narrative & OCF Compass**
+
+* Knight’s Oath & “Enemy of the Day.”
+* ACT Combo 1–5 integration.
+* OCF Compass widget.
+* Mindfulness bonus (PF multiplier).
+
+### Phase 4 — **Goals & Journal**
+
+* Goal creation & tracking (Behavioral/Outcome).
+* Personal journal with filtering & export.
+* Historical statistics by period.
+
+### Phase 5 — **Ranks & Reports**
+
+* Monthly split ladder + KDA metric.
+* Quarterly ranks (Page → Paladin).
+* Full analytics & PDF reports.
+
+### Phase 6 — **Cosmetics & Social Layer**
+
+* Profile frames, banners, emblems.
+* “Orders” (private groups, optional social).
+* Seasonal events and “mentor whispers.”
+* Offline sync + CSV export.
+
+---
+
+## 13) Priority Order
+
+| Priority | Feature                   | Reason                             |
+| -------- | ------------------------- | ---------------------------------- |
+| 1        | Daily Quests + Reflection | Core engagement loop               |
+| 2        | Values + Skills           | Foundational ACT depth             |
+| 3        | Steps Aside + Recovery    | Gentle correction, self-compassion |
+| 4        | Knight Oath + ACT Combo   | Emotional immersion                |
+| 5        | Goals + Journal           | Personal meaning and continuity    |
+| 6        | Ranks + Reports           | Long-term motivation               |
+| 7        | Cosmetics + Social        | Late-phase engagement              |
+
+---
+
+## 14) Release Plan Summary
+
+| Release | Key Deliverables                                    |
+| ------- | --------------------------------------------------- |
+| **R1**  | MVP core loop (quests, reflection, XP, CSV export). |
+| **R2**  | Values, ACT skills, steps aside, milestone rewards. |
+| **R3**  | Knight Oath, enemies, ACT combo, OCF compass.       |
+| **R4**  | Goals, journal, reports.                            |
+| **R5**  | Ranks, splits, titles, PDF export.                  |
+| **R6**  | Cosmetics, social features, events.                 |
+
+---
+
+## 15) Acceptance Criteria (Simplified)
+
+* Users can complete daily quests and reflections with XP calculation.
+* Value selection affects quest generation and XP modifiers.
+* “Steps Aside” events create recovery quests automatically.
+* Knight Oath and ACT Combo flow correctly update PF and XP bonuses.
+* Journal entries can be filtered, searched, and exported.
+* Goal tracking updates weekly reports and split bonuses.
+* Reports display completion rate, streaks, value alignment, KDA.
+
+---
+
+## 16) Summary
+
+This version focuses on **clarity, ACT philosophy, and player narrative** rather than technical schema. All data models and architecture are deferred to the tech team.
+
+The product evolves from **core mindfulness RPG** to a **comprehensive self-development platform**, where living by your values — not perfection — defines victory.
+
+— End of Document —
