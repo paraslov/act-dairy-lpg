@@ -124,9 +124,9 @@ export const baseValues = pgTable(
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		nameIdx: index('base_values_name_idx').on(table.name),
-	}),
+	})
 )
 
 // Sub-Values - User-defined sub-values (e.g., "Parenting", "Writing", "Fitness")
@@ -137,16 +137,16 @@ export const subValues = pgTable(
 		userId: text('user_id')
 			.notNull()
 			.references(() => users.id, { onDelete: 'cascade' }),
-	name: text('name').notNull(),
+		name: text('name').notNull(),
 		description: text('description'),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 		deletedAt: timestamp('deleted_at'),
 	},
-	(table) => ({
+	table => ({
 		userIdIdx: index('sub_values_user_id_idx').on(table.userId),
 		deletedAtIdx: index('sub_values_deleted_at_idx').on(table.deletedAt),
-	}),
+	})
 )
 
 // Sub-Value to Base-Value Links - Many-to-many relationship
@@ -162,18 +162,18 @@ export const subValueBaseValueLinks = pgTable(
 			.references(() => baseValues.id, { onDelete: 'cascade' }),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueLink: unique('sub_value_base_value_unique').on(
 			table.subValueId,
-			table.baseValueId,
+			table.baseValueId
 		),
 		subValueIdIdx: index('sub_value_base_value_links_sub_value_id_idx').on(
-			table.subValueId,
+			table.subValueId
 		),
 		baseValueIdIdx: index('sub_value_base_value_links_base_value_id_idx').on(
-			table.baseValueId,
+			table.baseValueId
 		),
-	}),
+	})
 )
 
 // Stat Types - Registry of all stat types (light and shadow)
@@ -185,19 +185,19 @@ export const statTypes = pgTable(
 		displayName: text('display_name').notNull(),
 		type: statTypeCategoryEnum('type').notNull(),
 		counterpartStatTypeId: text('counterpart_stat_type_id').references(
-			() => statTypes.id,
+			() => statTypes.id
 		),
 		description: text('description'),
 		displayOrder: integer('display_order').notNull().default(0),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		typeIdx: index('stat_types_type_idx').on(table.type),
 		nameIdx: index('stat_types_name_idx').on(table.name),
 		counterpartIdx: index('stat_types_counterpart_idx').on(
-			table.counterpartStatTypeId,
+			table.counterpartStatTypeId
 		),
-	}),
+	})
 )
 
 // ============================================================================
@@ -223,11 +223,11 @@ export const questDefinitions = pgTable(
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 		deletedAt: timestamp('deleted_at'),
 	},
-	(table) => ({
+	table => ({
 		ownerIdIdx: index('quest_definitions_owner_id_idx').on(table.ownerId),
 		directionIdx: index('quest_definitions_direction_idx').on(table.direction),
 		isActiveIdx: index('quest_definitions_is_active_idx').on(table.isActive),
-	}),
+	})
 )
 
 // Quest Instances - Scheduled/completed quest instances for specific dates
@@ -248,20 +248,20 @@ export const questInstances = pgTable(
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		userIdIdx: index('quest_instances_user_id_idx').on(table.userId),
 		scheduledDateIdx: index('quest_instances_scheduled_date_idx').on(
-			table.scheduledDate,
+			table.scheduledDate
 		),
 		statusIdx: index('quest_instances_status_idx').on(table.status),
 		questDefinitionIdIdx: index('quest_instances_quest_definition_id_idx').on(
-			table.questDefinitionId,
+			table.questDefinitionId
 		),
 		userDateIdx: index('quest_instances_user_date_idx').on(
 			table.userId,
-			table.scheduledDate,
+			table.scheduledDate
 		),
-	}),
+	})
 )
 
 // Quest Definition to Sub-Value Links
@@ -278,19 +278,19 @@ export const questDefinitionSubValueLinks = pgTable(
 		relationType: valueRelationTypeEnum('relation_type').notNull(),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueLink: unique('quest_definition_sub_value_unique').on(
 			table.questDefinitionId,
 			table.subValueId,
-			table.relationType,
+			table.relationType
 		),
 		questDefinitionIdIdx: index(
-			'quest_definition_sub_value_links_quest_definition_id_idx',
+			'quest_definition_sub_value_links_quest_definition_id_idx'
 		).on(table.questDefinitionId),
-		subValueIdIdx: index('quest_definition_sub_value_links_sub_value_id_idx').on(
-			table.subValueId,
-		),
-	}),
+		subValueIdIdx: index(
+			'quest_definition_sub_value_links_sub_value_id_idx'
+		).on(table.subValueId),
+	})
 )
 
 // ============================================================================
@@ -313,18 +313,15 @@ export const diaryDays = pgTable(
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueUserDate: unique('diary_days_user_date_unique').on(
 			table.userId,
-			table.date,
+			table.date
 		),
 		userIdIdx: index('diary_days_user_id_idx').on(table.userId),
 		dateIdx: index('diary_days_date_idx').on(table.date),
-		userDateIdx: index('diary_days_user_date_idx').on(
-			table.userId,
-			table.date,
-		),
-	}),
+		userDateIdx: index('diary_days_user_date_idx').on(table.userId, table.date),
+	})
 )
 
 // Diary Notes - Multiple notes per diary day
@@ -340,16 +337,17 @@ export const diaryNotes = pgTable(
 			.references(() => users.id, { onDelete: 'cascade' }),
 		content: text('content').notNull(),
 		timeOfDay: time('time_of_day'),
+		moveType: moveTypeEnum('move_type'), // Optional TOWARD/AWAY move type
 		metadata: jsonb('metadata'), // For tags, mood, etc.
-	createdAt: timestamp('created_at').defaultNow().notNull(),
-	updatedAt: timestamp('updated_at').defaultNow().notNull(),
+		createdAt: timestamp('created_at').defaultNow().notNull(),
+		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 		deletedAt: timestamp('deleted_at'),
 	},
-	(table) => ({
+	table => ({
 		diaryDayIdIdx: index('diary_notes_diary_day_id_idx').on(table.diaryDayId),
 		userIdIdx: index('diary_notes_user_id_idx').on(table.userId),
 		createdAtIdx: index('diary_notes_created_at_idx').on(table.createdAt),
-	}),
+	})
 )
 
 // Diary Note to Quest Instance Links
@@ -365,18 +363,18 @@ export const diaryNoteQuestInstanceLinks = pgTable(
 			.references(() => questInstances.id, { onDelete: 'cascade' }),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueLink: unique('diary_note_quest_instance_unique').on(
 			table.diaryNoteId,
-			table.questInstanceId,
+			table.questInstanceId
 		),
-		diaryNoteIdIdx: index('diary_note_quest_instance_links_diary_note_id_idx').on(
-			table.diaryNoteId,
-		),
+		diaryNoteIdIdx: index(
+			'diary_note_quest_instance_links_diary_note_id_idx'
+		).on(table.diaryNoteId),
 		questInstanceIdIdx: index(
-			'diary_note_quest_instance_links_quest_instance_id_idx',
+			'diary_note_quest_instance_links_quest_instance_id_idx'
 		).on(table.questInstanceId),
-	}),
+	})
 )
 
 // Diary Note to Sub-Value Links
@@ -393,18 +391,18 @@ export const diaryNoteSubValueLinks = pgTable(
 		relationType: valueRelationTypeEnum('relation_type').notNull(),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueLink: unique('diary_note_sub_value_unique').on(
 			table.diaryNoteId,
-			table.subValueId,
+			table.subValueId
 		),
 		diaryNoteIdIdx: index('diary_note_sub_value_links_diary_note_id_idx').on(
-			table.diaryNoteId,
+			table.diaryNoteId
 		),
 		subValueIdIdx: index('diary_note_sub_value_links_sub_value_id_idx').on(
-			table.subValueId,
+			table.subValueId
 		),
-	}),
+	})
 )
 
 // ============================================================================
@@ -422,7 +420,7 @@ export const moves = pgTable(
 		type: moveTypeEnum('type').notNull(),
 		questInstanceId: text('quest_instance_id').references(
 			() => questInstances.id,
-			{ onDelete: 'set null' },
+			{ onDelete: 'set null' }
 		),
 		diaryNoteId: text('diary_note_id').references(() => diaryNotes.id, {
 			onDelete: 'set null',
@@ -431,20 +429,20 @@ export const moves = pgTable(
 		occurredAt: timestamp('occurred_at').notNull().defaultNow(),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		userIdIdx: index('moves_user_id_idx').on(table.userId),
 		typeIdx: index('moves_type_idx').on(table.type),
 		occurredAtIdx: index('moves_occurred_at_idx').on(table.occurredAt),
 		questInstanceIdIdx: index('moves_quest_instance_id_idx').on(
-			table.questInstanceId,
+			table.questInstanceId
 		),
 		diaryNoteIdIdx: index('moves_diary_note_id_idx').on(table.diaryNoteId),
 		userTypeDateIdx: index('moves_user_type_date_idx').on(
 			table.userId,
 			table.type,
-			table.occurredAt,
+			table.occurredAt
 		),
-	}),
+	})
 )
 
 // Move to Sub-Value Links
@@ -460,16 +458,16 @@ export const moveSubValueLinks = pgTable(
 			.references(() => subValues.id, { onDelete: 'cascade' }),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueLink: unique('move_sub_value_unique').on(
 			table.moveId,
-			table.subValueId,
+			table.subValueId
 		),
 		moveIdIdx: index('move_sub_value_links_move_id_idx').on(table.moveId),
 		subValueIdIdx: index('move_sub_value_links_sub_value_id_idx').on(
-			table.subValueId,
+			table.subValueId
 		),
-	}),
+	})
 )
 
 // ============================================================================
@@ -491,14 +489,14 @@ export const userStats = pgTable(
 		currentLevel: integer('current_level').notNull().default(1),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueUserStat: unique('user_stats_user_stat_unique').on(
 			table.userId,
-			table.statTypeId,
+			table.statTypeId
 		),
 		userIdIdx: index('user_stats_user_id_idx').on(table.userId),
 		statTypeIdIdx: index('user_stats_stat_type_id_idx').on(table.statTypeId),
-	}),
+	})
 )
 
 // Sub-Value Progress - XP and level per sub-value per user
@@ -516,16 +514,16 @@ export const subValueProgress = pgTable(
 		currentLevel: integer('current_level').notNull().default(1),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		uniqueUserSubValue: unique('sub_value_progress_user_sub_value_unique').on(
 			table.userId,
-			table.subValueId,
+			table.subValueId
 		),
 		userIdIdx: index('sub_value_progress_user_id_idx').on(table.userId),
 		subValueIdIdx: index('sub_value_progress_sub_value_id_idx').on(
-			table.subValueId,
+			table.subValueId
 		),
-	}),
+	})
 )
 
 // Global Progress - Global player XP and level
@@ -541,9 +539,9 @@ export const globalProgress = pgTable(
 		currentLevel: integer('current_level').notNull().default(1),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		userIdIdx: index('global_progress_user_id_idx').on(table.userId),
-	}),
+	})
 )
 
 // XP History - Optional audit trail of XP changes
@@ -556,10 +554,12 @@ export const xpHistory = pgTable(
 			.references(() => users.id, { onDelete: 'cascade' }),
 		entityType: xpEntityTypeEnum('entity_type').notNull(),
 		entityId: text('entity_id').notNull(), // References sub_value_id, stat_type_id, or 'global'
-		moveId: text('move_id').references(() => moves.id, { onDelete: 'set null' }),
+		moveId: text('move_id').references(() => moves.id, {
+			onDelete: 'set null',
+		}),
 		questInstanceId: text('quest_instance_id').references(
 			() => questInstances.id,
-			{ onDelete: 'set null' },
+			{ onDelete: 'set null' }
 		),
 		diaryNoteId: text('diary_note_id').references(() => diaryNotes.id, {
 			onDelete: 'set null',
@@ -571,7 +571,7 @@ export const xpHistory = pgTable(
 		levelAfter: integer('level_after').notNull(),
 		createdAt: timestamp('created_at').defaultNow().notNull(),
 	},
-	(table) => ({
+	table => ({
 		userIdIdx: index('xp_history_user_id_idx').on(table.userId),
 		entityTypeIdx: index('xp_history_entity_type_idx').on(table.entityType),
 		entityIdIdx: index('xp_history_entity_id_idx').on(table.entityId),
@@ -580,9 +580,9 @@ export const xpHistory = pgTable(
 		userEntityIdx: index('xp_history_user_entity_idx').on(
 			table.userId,
 			table.entityType,
-			table.entityId,
+			table.entityId
 		),
-	}),
+	})
 )
 
 // ============================================================================
@@ -604,8 +604,7 @@ export type BaseValue = typeof baseValues.$inferSelect
 export type NewBaseValue = typeof baseValues.$inferInsert
 export type SubValue = typeof subValues.$inferSelect
 export type NewSubValue = typeof subValues.$inferInsert
-export type SubValueBaseValueLink =
-	typeof subValueBaseValueLinks.$inferSelect
+export type SubValueBaseValueLink = typeof subValueBaseValueLinks.$inferSelect
 export type NewSubValueBaseValueLink =
 	typeof subValueBaseValueLinks.$inferInsert
 export type StatType = typeof statTypes.$inferSelect
