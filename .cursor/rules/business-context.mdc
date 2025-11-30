@@ -1,438 +1,614 @@
----
-# Business context - applied contextually when relevant
----
-# Technical Design Document — “Knight’s Journal: ACT Game (The Happiness Trap)”
+# Life RPG Concept Based on ACT and _The Happiness Trap_
 
-Version: 2.0 • Date: 11.11.2025 • Language: EN
+## 1. Core Idea
 
----
+This is a Life RPG where the goal is **not** to slay a dragon, but to build a **rich, full, and meaningful life while making room for the inevitable pain that comes with it**.
 
-## 0) Vision & Concept
+Instead of traditional HP/MP, the main “stats” of the character are **psychological skills** from **ACT (Acceptance and Commitment Therapy)**.
 
-**Vision.** “The Noble Knight” — a journaling RPG where **progress = living by your values** through ACT (Acceptance & Commitment Therapy): acceptance, defusion, present-moment contact, self-as-context, clarity of values, and committed action.
+The player learns to:
 
-**Genre.** Habit-tracker / life-sim with RPG progression and a mindfulness foundation.
+- **accept** inner difficulties instead of fighting them,
+- and **act in line with their values**, even when it is uncomfortable.
 
-**Core theme.** You are a **medieval knight** (archetype similar to Jon Snow) who defeats daily “enemies” not with a sword, but with **values, awareness, and psychological flexibility.**
+The game uses original ACT terminology (in English) and ideas from _The Happiness Trap_.
 
 ---
 
-## 1) Core Goals
+## 2. Character Skills & Abilities (ACT Processes as Skills)
 
-1. Daily ACT-based practice through micro-quests and reflection.
-2. Systematic development of ACT skills and life domains.
-3. Soft gamified motivation: ranks, titles, streaks, value alignment.
-4. Supportive handling of setbacks (“steps aside”) via recovery quests.
-5. Cultivation of **psychological flexibility** and consistent alignment with personal values.
+The character develops **six core ACT processes** instead of magic or physical strength. Each process is a skill that can be trained and leveled up.
 
----
+### 2.1. Acceptance
 
-## 2) Key Features (Player-Facing)
+**Acceptance** – the ability to **open up** to unpleasant emotions and sensations instead of fighting or suppressing them.
 
-1. **Daily Quests** — short actions (2–20 min) tagged with values, skills, and life domains.
-2. **Reflection Rituals** — evening check-ins with ACT-style questions.
-3. **Values Map** — 4 primary values (Health, Love, Work, Play) with customizable sub-values and progression.
-4. **ACT Skillset** — six core ACT skills: Defusion, Acceptance, Present Moment, Self-as-Context, Values, Committed Action.
-5. **Life Spheres** — Programming, Psychology, Health (includes Sport & Nutrition), Spirit.
-6. **“Steps Aside” & Recovery Quests** — gentle feedback without shame, adaptive difficulty.
-7. **Knight’s Narrative** — daily “enemy” representing distractions or avoidance patterns.
-8. **ACT Combo (1–5)** — Define, Allow, Expand, Contact, Commit; embedded in quick check-ins.
-9. **OCF Compass** — tracks Openness, Curiosity, Flexibility (psychological flexibility metric).
-10. **User Goals** — short- and mid-term behavioral or outcome goals linked to values.
-11. **User Journal** — free-text entries, date filters, value tags, PDF/CSV export.
-12. **Ranks & Splits** — monthly ladder (Iron→Diamond) + quarterly titles (Page→Paladin).
-13. **Reports & Insights** — weekly/monthly/quarterly dashboards and “Knight’s Scrolls.”
+In-game:
+
+- High **Acceptance** lets the hero “switch off the struggle switch”.
+- When hit by “emotional damage” (e.g., Anxiety Monster), the hero:
+  - does **not** lose HP immediately,
+  - but “holds” the discomfort and stays functional.
+
+- Acceptance reduces useless resistance and keeps the character able to move toward values.
 
 ---
 
-## 3) Core Gameplay Loop
+### 2.2. Cognitive Defusion
 
-**Morning:**
+**Cognitive Defusion** – the ability to **step back from thoughts**, seeing them as words and stories, not as literal truths or commands.
 
-* Player swears the **Knight’s Oath** (selects main value of the day).
-* “Enemy of the Day” appears with weaknesses linked to ACT Combo steps.
-* Choose 1–3 quests for the day.
+In-game:
 
-**Daytime:**
+- Defusion is a skill that **disperses mental illusions** created by monsters.
+- Example: when attacked by the Inner Critic saying “I’m a loser”, a character with high Defusion:
+  - recognizes it as “I’m having the thought that I’m a loser”,
+  - and does **not** change behavior based on this thought alone.
 
-* Perform quests (2–20 min) using timers and quick emotional/mindfulness check-ins.
-* Optional ACT Combo 1–5 to handle distractions or “enemy attacks.”
-
-**Evening:**
-
-* Complete ACT-style reflection (What happened? What mattered?).
-* Record “steps aside” events and recovery.
-* Receive XP, milestones (30/60/90/110%), and rewards.
-* Generate “Knight’s Scroll” with soft insights and guidance.
+- Mechanically: Defusion reduces the effect duration and power of debuffs like **Fear**, **Negative Thinking**, **Self-Doubt**, etc.
 
 ---
 
-## 4) Narrative Layer — “Enemies of the Day”
+### 2.3. Mindfulness / Contact with the Present Moment
 
-Enemies symbolize inner challenges, e.g.:
+**Mindfulness (Contact with the Present Moment)** – the ability to be **here and now**, fully engaged with the current situation.
 
-* *Sirens of Impulse* (instant gratification),
-* *Fog of Distraction*,
-* *Armor of Avoidance*,
-* *Cloak of Overthinking*,
-* *Chaos of Unclear Goals*.
+In-game:
 
-Each day one “boss” is generated based on recent patterns (distraction, avoidance, etc.). Defeating the boss involves completing the ACT Combo and staying aligned with your chosen value.
+- Mindfulness functions as a **Focus Mode**:
+  - While active, the hero is resistant to **distracting attacks** (worries about the future, rumination about the past).
+  - Increases XP gained from actions, because the hero performs them consciously.
 
----
-
-## 5) ACT Combo 1–5
-
-1. **Define & Name** – Identify the thought/urge (name the enemy).
-2. **Allowing** – Give permission to feel without resistance.
-3. **Expansion / Make Room** – Breathe and hold the emotion in awareness.
-4. **Contact with the Present Moment** – Return to your senses, ground in the now.
-5. **Committed Action** – Take a small step toward your chosen value.
-
-Completing all 5 steps grants a short-term buff (Mindfulness bonus).
+- It helps the character notice early signs of **fusion** and **avoidance** before they hijack behavior.
 
 ---
 
-## 6) User Goals & Motivation
+### 2.4. Self-as-Context (Observing Self)
 
-* **Behavioral Goals:** frequency/routine-based (e.g., “Mindful eating 4×/week”).
-* **Outcome Goals:** results-based (e.g., “Run 5km in 30 min”), presented as process-focused.
-* Weekly goal progress grants Split Points (SP) and seasonal Rank Points (RP).
-* Full goal completion unlocks special cosmetics and badges.
+**Self-as-Context (Observing Self)** – the ability to experience oneself as the **observer** of all thoughts, feelings, and sensations, rather than being defined by them.
 
----
+In-game:
 
-## 7) Journal & Reflection
+- This skill gives the hero a **stable sense of identity**:
+  - “I am not my thoughts or emotions.”
 
-* Users can create and edit daily journal entries.
-* Filter entries by date range, value, or tags.
-* View historical reflections (week/month/quarter/year).
-* Export journal or period summaries to PDF/CSV.
+- Attacks like **Confusion** or **Identity Crisis** deal less damage.
+- Mechanically: when activated, the camera metaphorically “zooms out”:
+  - the player sees the character and their thoughts/emotions as separate elements on screen.
 
----
-
-## 8) Reports & Insights
-
-* Timeline charts for skill, value, and domain progression.
-* Heatmaps for habits and quest completion.
-* Comparative trend graphs (week/month/quarter).
-* “Knight’s Scroll” with ACT-based narrative summaries.
+- This reduces reactivity and supports Acceptance and Defusion.
 
 ---
 
-## 9) Ranks, Splits & KDA Metric
+### 2.5. Values
 
-**Splits:** Monthly seasons (Iron → Diamond). Hidden MMR: *Gallantry Rating (GR)*.
+**Values** – the **heart of the game**.
 
-**KDA (ACT adaptation):**
+Values are **chosen life directions**, like:
 
-* **K (Keeps):** successful value-aligned actions.
-* **D (Drifts):** steps aside (penalty reduced if recovery quest done).
-* **A (Assists):** helping others (family, friends, colleagues).
+- Family
+- Creativity
+- Health
+- Learning
+- Helping others
+- Authenticity, etc.
 
-`KDA = (K + 0.5 × A) / max(1, D)`
+In-game:
 
-Split Points (SP) are earned daily based on KDA and consistency. Split rank bonuses convert into RP for quarterly titles.
+- At the start, the player goes through a **Value Discovery** flow:
+  - explores: “What kind of person do I want to be?”
+  - selects key values that become their **Values Compass**.
 
----
-
-## 10) OCF Compass & Psychological Flexibility
-
-**Formula:** Presence + Acceptance + Valued/Committed Action = Psychological Flexibility.
-
-Visual compass (three sectors: Openness, Curiosity, Flexibility) fills during ACT Combo steps.
-
-**PF Bonus (soft multiplier):** increases XP for mindful quest completion.
-
----
-
-## 11) Core Screens
-
-| Screen                 | Purpose                                          |
-| ---------------------- | ------------------------------------------------ |
-| **Home / Today**       | Value emblem, milestones, list of quests.        |
-| **Quest / Check-in**   | Timer, emotions, ACT Combo interface.            |
-| **Reflection**         | Evening ACT review, XP, rewards, insights.       |
-| **Values**             | 4 main values, sub-values, levels.               |
-| **Skills (ACT)**       | Skill progression, perks, explanations.          |
-| **Goals**              | Active goals, progress bars, add/edit interface. |
-| **Journal**            | Personal notes with filters and export.          |
-| **Reports**            | Charts, heatmaps, “Knight’s Scroll.”             |
-| **Rank / Split**       | League progression, titles, bonuses.             |
-| **Profile / Settings** | Preferences, privacy, localization.              |
+- Every main quest line is linked to one or more **values**.
+- Values define **where the character is heading**, not what they must “achieve”.
+- A high **Values skill** means:
+  - clarity about what matters,
+  - and better navigation when facing fear, doubt, or temptations.
 
 ---
 
-### 11.1 Home / Today
+### 2.6. Committed Action
 
-**Goal:** Start the day with clarity and momentum.
+**Committed Action** – the ability to take **effective, value-based action**, even in the presence of difficult thoughts and feelings.
 
-**Content blocks**
+In-game:
 
-* **Knight’s Oath banner:** today’s primary value (tap to change). Microcopy: *“Today I ride under the banner of [Value].”*
-* **Enemy of the Day card:** name, brief description, suggested **ACT Combo** (weaknesses). CTA: *“Face enemy”* → opens Combo.
-* **Milestones bar:** 0 / 30 / 60 / 90 / 110% with chest icons.
-* **Today’s Quests list:** 1–3 selected quests (duration, difficulty, tags: Value / ACT skill / Sphere / Activity like **Sport** or **Nutrition**). Quick actions: Start ▸, Edit, Swap.
-* **Quick Add:** add a custom 2–20 min quest (templates for Sport/Nutrition).
-* **Recovery ribbon (conditional):** if a drift was logged → *“Return to the Path”* quest appears.
-* **Streak & KDA mini-widget:** streak days, KDA of last 7 days, PF icon.
+- Committed Action defines the character’s ability to:
+  - start quests,
+  - stick with them,
+  - finish them despite obstacles.
 
-**States & interactions**
-
-* Empty state: prompt 3 suggested quests with a *“Roll again”* button.
-* Long‑press on a quest: quick edit duration/difficulty.
-* Swipe right = Start, swipe left = Replace.
-* Accessibility: large hit areas (≥44pt), dynamic type, haptics on milestone unlock.
+- It powers **Action Planning**: breaking big value-based goals into concrete steps.
+- High Committed Action = more **toward moves** (see below) and fewer drops due to procrastination or avoidance.
 
 ---
 
-### 11.2 Quest / Check‑in
+## 3. Character Stats
 
-**Goal:** Execute a micro‑quest with mindful awareness.
+Character Stats: Light and Shadow
 
-**Content blocks**
+In this ACT-based life RPG, the player’s character is defined not only by “positive” psychological skills, but also by their “shadow” counterparts.
 
-* **Timer** (2/5/10/20 min) + progress ring.
-* **ACT Combo mini-strip** (1–5): each step tappable with 1‑sentence guidance.
-* **State quick‑tags:** emotion, urge, thought‑hook (1 tap each).
-* **Alignment slider:** *“How much did this serve [Value]?”* (0–100%).
-* **Controls:** Start/Pause/Done; *Mark Drift*; *Add Note*.
+Positive stats represent stable skills the player has developed.
 
-**States & interactions**
+They never decrease; they either grow or stay the same.
 
-* If *Mark Drift* → offer **Recovery Quest** and show compassionate microcopy.
-* Completing all 5 combo steps grants **Mindfulness bonus** badge.
-* Offline mode cue; auto‑save on exit; resume where left off.
+Once you’ve learned defusion or acceptance, that capacity is there, even if you don’t use it all the time.
 
----
+Shadow stats represent how much the character is currently caught in old, unhelpful patterns.
 
-### 11.3 Reflection (Evening)
+They increase with away moves (actions driven by avoidance, fusion, autopilot, etc.).
 
-**Goal:** Integrate the day through ACT and assign rewards.
+They decrease with toward moves (values-based actions) and specific in-game practices.
 
-**Flow**
+This way the player can see both growth and regression clearly:
+skills can be high and the shadows can temporarily flare up when life gets hard.
 
-1. **Context:** What happened? (short text chips)
-2. **Experience:** Body / thoughts / feelings (selector)
-3. **Value check:** Which value mattered most?
-4. **Committed next step:** small action for tomorrow
-5. **Gratitude x1**
-6. **Drifts & Recovery:** log any steps aside; mark recovery quests done
-7. **Rewards:** XP, milestone chests, insights card (*Knight’s Scroll*)
+Core Stat Pairs
 
-**Microcopy tone:** warm, non‑shaming; celebrate noticing and returning.
+Each core ACT process is represented as a pair: a light stat (skill) and a shadow stat (its counterpart).
 
----
+3.1. Psychological Flexibility / Psychological Inflexibility
 
-### 11.4 Values
+Psychological Flexibility
+The main “global” stat of the character. It reflects the ability to stay present, open up to inner experience, and act in line with personal values.
+High Psychological Flexibility means the character can adapt to difficulties, feel what they feel, and still choose effective, values-based actions.
 
-**Goal:** Make values salient and trainable.
+Psychological Inflexibility
+The shadow counterpart: how much the character is currently trapped in rigid, unhelpful patterns — dominated by avoidance, fusion, and automatic reactions.
+A higher Psychological Inflexibility score makes other shadow stats more impactful and increases the chance of getting stuck or derailed by internal experiences.
 
-**Content blocks**
+3.2. Acceptance / Experiential Avoidance
 
-* **Four pillars:** Health, Love, Work, Play (cards with icons and brief copy).
-* **Weights & levels:** adjust importance; see level progress (L1–L10).
-* **Sub‑values:** add/edit (e.g., Parenting under Love).
-* **Impact hints:** how this value nudges suggestions and rewards.
-* **Set as Oath:** CTA to pick as tomorrow’s banner.
+Acceptance / Willingness
+Measures the character’s readiness to experience discomfort in the service of what matters.
+High Acceptance means the character can carry fear, pain, or shame along for the journey without shutting down or fighting their inner world.
 
-**States:** empty sub‑values state with examples from the ACT library.
+Experiential Avoidance
+The shadow stat: how strongly the character is trying to get rid of or escape from unwanted thoughts and feelings.
+Experiential Avoidance grows when the player consistently chooses away moves to dodge discomfort (numbing, distraction, procrastination instead of facing what matters).
+It shrinks when the player does small, values-based actions while allowing discomfort to be there.
 
----
+3.3 Cognitive Defusion / Cognitive Fusion
 
-### 11.5 Skills (ACT)
+Cognitive Defusion
+The skill of seeing thoughts as thoughts – words, images, and stories – rather than literal truths or commands.
+High Defusion means the character can notice thoughts like “I’m a failure” without automatically believing or obeying them.
 
-**Goal:** Teach and reinforce ACT skills.
+Cognitive Fusion
+The shadow: how entangled the character is with their thoughts right now.
+When Cognitive Fusion is high, the character treats thoughts as facts, gets hooked by mental stories, and behaves as if the mind is always right.
+Fusion grows when the character repeatedly cancels quests or actions because of thoughts like “I can’t”, “It’s pointless”, or “I’ll be judged”.
+It decreases when the player uses in-game defusion techniques and still acts according to values.
 
-**Content blocks**
+3.4. Mindfulness / Autopilot
 
-* Six skill tiles with level and short effect (e.g., *Self‑as‑Context: reduces drift penalties*).
-* **Practice library:** micro‑exercises mapped to each skill (2–10 min).
-* **Perks preview:** next milestone effects.
+Mindfulness (Focus)
+Represents the ability to connect with the present moment and fully engage with what is happening here and now.
+High Mindfulness improves the effectiveness of all actions: quests completed with high focus grant more experience and better outcomes.
 
-**Interaction:** starting a micro‑exercise creates a timed mini‑quest.
+Autopilot (Mindlessness)
+The shadow stat: how much the character is running on automatic, disconnected from the present.
+High Autopilot means reacting instead of choosing, scrolling instead of participating, zoning out instead of engaging.
+Autopilot rises when the player repeatedly goes through days and quests mechanically, avoiding awareness.
+It drops when the player practices short in-game mindfulness exercises or completes quests consciously and intentionally.
 
----
+3.5. Values Alignment / Values Disconnection
 
-### 11.6 Goals
+Values Alignment
+Shows how closely the character’s actions are aligned with their chosen values.
+It can be tracked globally and per value (e.g., Health, Relationships, Creativity).
+High Values Alignment provides bonuses to motivation, recovery after setbacks, and unlocks deeper story events connected to meaning and fulfillment.
 
-**Goal:** Connect quests to meaningful outcomes.
+Values Disconnection (Values Drift)
+The shadow side: how far the character has drifted away from what truly matters to them.
+Values Disconnection increases when the player frequently chooses short-term comfort or fear-driven decisions over what they’ve declared as important.
+It decreases when the player takes even small, concrete steps in each values area, reinforcing the link between intention and action.
 
-**Content blocks**
+3.6. Committed Action / Avoidant Inaction
 
-* **Tabs:** Active • Upcoming • Completed.
-* **Cards:** title, linked value, cadence/metric, progress ring, week streak.
-* **CTA:** Add Goal (Behavioral/Outcome, timeframe 1–12 weeks).
-* **Weekly review nudge:** *“You’ve hit 80% — claim Split bonus.”*
+Committed Action
+Measures the character’s ability to take consistent, values-based steps, even in the presence of fear, doubt, or discomfort.
+High Committed Action means more quests get completed, fewer projects die halfway, and the character can translate insight into behavior.
 
-**Edit goals:** adjust cadence, pause, mark milestones.
+Avoidant Inaction (Stuckness)
+The shadow: how much the character is currently stuck in non-doing, delay, or impulsive detours that serve avoidance rather than values.
+Avoidant Inaction grows when quests aligned with values are repeatedly postponed, abandoned, or replaced with easy, numbing activities.
+It shrinks when the player starts and finishes small, realistic actions that move the character toward their values, even if those steps are tiny.
 
----
+This dual-stat system lets the player see both sides of their psychological journey:
 
-### 11.7 Journal
+Positive stats show what skills they have built over time.
 
-**Goal:** Provide a safe space for free‑form reflection.
+Shadow stats show how much old patterns are active right now.
 
-**Content blocks**
-
-* **Composer:** title (optional), body, tags (values, activities: Sport/Nutrition, mood).
-* **Date picker** (default = today).
-* **Filter & search:** by date range (month/quarter/year/custom), by value, by tag.
-* **List view:** timeline with previews; tap → full entry.
-* **Export:** PDF/CSV for selected range.
-
-**Privacy:** optional lock for sensitive entries.
-
----
-
-### 11.8 Reports
-
-**Goal:** Turn data into gentle guidance.
-
-**Content blocks**
-
-* **Period selector:** Week • Month • Quarter • Year • Custom.
-* **KPIs:** completion rate, value alignment, streak, KDA, PF sessions.
-* **Trends:** line charts; **Heatmap** of quest completion.
-* **Breakdowns:** by value, by sphere, by activity (**Sport**, **Nutrition**) and by enemy type.
-* **Knight’s Scroll:** narrative insights and suggestions for next period.
-* **Export:** PDF / CSV.
+Together they paint a clear picture of both long-term growth and current struggles, which fits perfectly with ACT’s focus on psychological flexibility in the real, messy flow of life.
 
 ---
 
-### 11.9 Rank / Split
+## 4. Quests & Level Progression
 
-**Goal:** Provide seasonal momentum without pressure.
+The storyline is structured around **values**. Each major value becomes a **quest line**, showing how it can be lived out.
 
-**Content blocks**
+Progress is measured not by gold or loot, but by **movement toward values**.
 
-* **League ladder:** Iron→Diamond with division progress bar.
-* **KDA panel:** last 7 days K, D, A; definitions tooltip.
-* **Split points (SP):** daily earnings; promotion series indicator.
-* **Season bonuses:** RP carry‑over to quarterly titles.
-* **Recent victories:** boss defeats, value streaks.
+### 4.1. Value Discovery Quest
 
-**Tone:** celebratory, never shaming; always suggest recovery.
+**Quest: “Value Discovery”**
 
----
+- Intro quest that helps the player identify what truly matters.
+- Presented as a journey to a **Hall of Values** or a meeting with a wise NPC.
+- The player answers questions like:
+  - “What kind of person do you want to be?”
+  - “What do you want your life to stand for?”
 
-### 11.10 Profile / Settings
-
-**Goal:** Safety, personalization, accessibility.
-
-**Content blocks**
-
-* Profile: avatar/emblem, display name, frame/banner selection.
-* Preferences: language (RU/EN), timezone, units, reminders schedule.
-* Privacy: local lock (PIN/biometric), data export/delete.
-* Notifications: morning oath, mid‑day check‑ins, evening reflection, drift coaching.
-* About: ACT basics, crisis resources, credits.
-
-**Accessibility:** dynamic text, screen reader labels, high‑contrast theme option.
+- Reward: **Values Compass** – a permanent UI element showing key life directions.
 
 ---
 
-------------------- | ------------------------------------------------ |
-| **Home / Today**       | Value emblem, milestones, list of quests.        |
-| **Quest / Check-in**   | Timer, emotions, ACT Combo interface.            |
-| **Reflection**         | Evening ACT review, XP, rewards, insights.       |
-| **Values**             | 4 main values, sub-values, levels.               |
-| **Skills (ACT)**       | Skill progression, perks, explanations.          |
-| **Goals**              | Active goals, progress bars, add/edit interface. |
-| **Journal**            | Personal notes with filters and export.          |
-| **Reports**            | Charts, heatmaps, “Knight’s Scroll.”             |
-| **Rank / Split**       | League progression, titles, bonuses.             |
-| **Profile / Settings** | Preferences, privacy, localization.              |
+### 4.2. Values-Driven Main Quest Lines
+
+Each key value has its own main quest line. Examples:
+
+- **Creativity – “The Artist’s Journey”**
+  - Write a chapter of a book.
+  - Finish a project.
+  - Share the work with the world (symbolically).
+  - Fight monsters like **Procrastination**, **Self-Doubt**, **Perfectionism**.
+
+- **Relationships – “Bridge of Empathy”**
+  - Initiate honest conversations.
+  - Repair a conflict.
+  - Show vulnerability.
+  - Confront monsters like **Pride**, **Fear of Rejection**, **Shame**.
+
+Completing quests in a value line grants:
+
+- **Value XP** for that value,
+- higher **Values Alignment**,
+- sometimes special traits or items tied to that value.
 
 ---
 
-## 12) Implementation Roadmap (Feature Phases)
+### 4.3. Side Quests: “Facing Demons”
 
-### Phase 1 — **MVP (Core Loop)**
+These optional quests focus on specific ACT skills.
 
-* Morning quest selection (1–3).
-* Quest execution & check-ins.
-* Evening reflection (ACT form).
-* Value emblem display.
-* Milestone rewards (30/60/90/110%).
+Examples:
 
-### Phase 2 — **Values & ACT Skills**
+- **“Quicksand Bog” (Acceptance training)**
+  - The hero falls into emotional quicksand.
+  - Struggling (moving violently, trying to escape) makes them sink deeper.
+  - To escape, the player must:
+    - stop struggling,
+    - open up to the sensation of sinking,
+    - relax and spread arms (metaphor for Acceptance),
+    - slowly float up and move to values.
 
-* Values page (Health/Love/Work/Play).
-* ACT skill leveling & perks.
-* “Steps Aside” system & recovery quests.
+- **“Thought Defusion Lab” (Defusion training)**
+  - Illusory maze created by thoughts.
+  - Negative phrases appear on walls and screens.
+  - Player uses Defusion techniques:
+    - renaming thoughts (“I’m having the thought that…”),
+    - saying them in a funny voice,
+    - watching them float away.
 
-### Phase 3 — **Knight Narrative & OCF Compass**
+  - Success: illusions lose power, paths become visible.
 
-* Knight’s Oath & “Enemy of the Day.”
-* ACT Combo 1–5 integration.
-* OCF Compass widget.
-* Mindfulness bonus (PF multiplier).
-
-### Phase 4 — **Goals & Journal**
-
-* Goal creation & tracking (Behavioral/Outcome).
-* Personal journal with filtering & export.
-* Historical statistics by period.
-
-### Phase 5 — **Ranks & Reports**
-
-* Monthly split ladder + KDA metric.
-* Quarterly ranks (Page → Paladin).
-* Full analytics & PDF reports.
-
-### Phase 6 — **Cosmetics & Social Layer**
-
-* Profile frames, banners, emblems.
-* “Orders” (private groups, optional social).
-* Seasonal events and “mentor whispers.”
-* Offline sync + CSV export.
+Reward: +1 to the relevant skill (Acceptance, Defusion, etc.) and symbolic items, e.g. **“Leaf of Mindfulness”** (reference to “Leaves on a stream” exercise).
 
 ---
 
-## 13) Priority Order
+### 4.4. Daily Mini-Quests (Life Journal Mode)
 
-| Priority | Feature                   | Reason                             |
-| -------- | ------------------------- | ---------------------------------- |
-| 1        | Daily Quests + Reflection | Core engagement loop               |
-| 2        | Values + Skills           | Foundational ACT depth             |
-| 3        | Steps Aside + Recovery    | Gentle correction, self-compassion |
-| 4        | Knight Oath + ACT Combo   | Emotional immersion                |
-| 5        | Goals + Journal           | Personal meaning and continuity    |
-| 6        | Ranks + Reports           | Long-term motivation               |
-| 7        | Cosmetics + Social        | Late-phase engagement              |
+The game includes a **daily quest system** linked to real life.
 
----
+Each day, the player receives small tasks such as:
 
-## 14) Release Plan Summary
+- “Make one toward move: spend 10 minutes on an avoided but important task.”
+- “Have a mindful conversation with a loved one (Relationships value).”
+- “Do one action for Health (walk, stretch, drink water mindfully).”
 
-| Release | Key Deliverables                                    |
-| ------- | --------------------------------------------------- |
-| **R1**  | MVP core loop (quests, reflection, XP, CSV export). |
-| **R2**  | Values, ACT skills, steps aside, milestone rewards. |
-| **R3**  | Knight Oath, enemies, ACT combo, OCF compass.       |
-| **R4**  | Goals, journal, reports.                            |
-| **R5**  | Ranks, splits, titles, PDF export.                  |
-| **R6**  | Cosmetics, social features, events.                 |
+The player marks completion in a **Values Journal**:
 
----
+- Completing daily quests:
+  - gives XP and cosmetic rewards,
+  - increases **Values Alignment** and **Committed Action**.
 
-## 15) Acceptance Criteria (Simplified)
+- If a quest is missed:
+  - no harsh punishment,
+  - the game suggests reflecting:
+    - “What got in the way?”
+    - “What can be a smaller step next time?”
 
-* Users can complete daily quests and reflections with XP calculation.
-* Value selection affects quest generation and XP modifiers.
-* “Steps Aside” events create recovery quests automatically.
-* Knight Oath and ACT Combo flow correctly update PF and XP bonuses.
-* Journal entries can be filtered, searched, and exported.
-* Goal tracking updates weekly reports and split bonuses.
-* Reports display completion rate, streaks, value alignment, KDA.
+This builds **self-compassion** into the gameplay.
 
 ---
 
-## 16) Summary
+### 4.5. Level Up via Psychological Growth
 
-This version focuses on **clarity, ACT philosophy, and player narrative** rather than technical schema. All data models and architecture are deferred to the tech team.
+The character levels up by accumulating **XP from mindful, value-based actions**.
 
-The product evolves from **core mindfulness RPG** to a **comprehensive self-development platform**, where living by your values — not perfection — defines victory.
+Examples:
 
-— End of Document —
+- To reach Level 2:
+  - perform N **toward moves**.
+
+- When leveling up:
+  - parts of the game world are freed from the **Happiness Trap fog**.
+  - new skills, quests, and areas unlock:
+    - e.g., Level 5: **Observing Self Sanctuary** becomes available.
+    - Level 10: access to the final boss fight.
+
+---
+
+### 4.6. Final Quest: “Escape the Happiness Trap”
+
+Endgame story arc:
+
+- The hero faces the main boss: **The Happiness Trap**.
+- The boss promises:
+  - “You can be happy all the time.”
+  - “Avoid pain at any cost.”
+
+- The boss tempts the player to abandon values in exchange for comfort and safety.
+
+To win, the hero must:
+
+1. Use **Acceptance** to open up to fear and discomfort.
+2. Use **Defusion** to step back from the boss’s seductive thoughts.
+3. Recall their **Values** and **Committed Action**.
+4. Take a value-based action **in the presence of fear**, not after eliminating it.
+
+Victory = the character **escapes the Happiness Trap mindset**:
+
+- Understands that a meaningful life includes pain,
+- chooses to keep moving toward values instead of chasing constant comfort.
+
+After the final quest, the game continues in **open-world mode**:
+
+- new challenges still appear (emotions, thoughts, setbacks),
+- but the player now has functioning ACT skills to handle them.
+
+---
+
+## 5. Obstacles & Monsters
+
+Internal struggles are represented as enemies, traps, and hostile environments.
+
+### 5.1. Experiential Avoidance Monster
+
+**Experiential Avoidance** – the habit of **trying to get rid of or avoid inner experiences at any cost**.
+
+In-game:
+
+- The Avoidance Monster whispers:
+  - “Run away.”
+  - “Numb this feeling.”
+  - “Distract yourself, don’t feel this.”
+
+- Each time the player chooses avoidance (an **away move**):
+  - the monster grows stronger,
+  - short-term relief appears,
+  - but quests do not progress, and future tasks become harder.
+
+- Counterplay:
+  - recognize avoidance,
+  - use Acceptance,
+  - and take at least a **small toward move**.
+
+---
+
+### 5.2. Cognitive Fusion Fog
+
+**Cognitive Fusion Fog** – an environment where the hero fuses with thoughts.
+
+In-game:
+
+- When entering zones like **Dense Forest of Thoughts**, the character:
+  - gets a **Fusion debuff**,
+  - sees intrusive thought-messages on screen (“You will fail”, “You are not good enough”),
+  - controls may be partially hijacked.
+
+- Using Defusion:
+  - pressing a button like **“I’m having the thought that…”** transforms the text.
+  - e.g., “I’m a failure” → “I’m having the thought that I’m a failure”.
+
+- This reduces the fog temporarily, allowing progress.
+- Fog can never be removed forever (thoughts always return), but the player learns not to take it literally.
+
+---
+
+### 5.3. Inner Critic
+
+**The Inner Critic** – boss or recurring enemy that personifies self-criticism, shame, and “not good enough” stories.
+
+In-game:
+
+- Appears as:
+  - a harsh mentor,
+  - a shadow version of the hero,
+  - or a mirror reflection.
+
+- Attacks with combined:
+  - **Fusion** (“This thought is the truth about you”),
+  - and **Avoidance** (“Give up, don’t even try”).
+
+- To defeat the Inner Critic, the player:
+  - uses Defusion to see critical messages as thoughts,
+  - uses Acceptance to allow shame and hurt,
+  - keeps taking **Committed Action** in line with values.
+
+- The Critic never disappears completely, but:
+  - each victory reduces its power,
+  - its lines become less convincing.
+
+---
+
+### 5.4. Monsters of Emotion
+
+Different **emotion-monsters**:
+
+- **Anxiety** – trembling shadow with many eyes.
+- **Anger** – fiery beast.
+- **Sadness** – heavy, slow-moving ghost.
+
+In-game:
+
+- The goal is **not** to kill these monsters,
+- but to **change relationship** with them.
+
+Example:
+
+- A novice hero fights Anxiety with **avoidance sword**:
+  - runs away,
+  - suppresses feelings,
+  - avoids situations.
+
+- Result:
+  - Anxiety Monster grows and returns stronger.
+
+- The game teaches:
+  - use Acceptance (“Expand”, “Make space”),
+  - walk past the monster while it talks,
+  - continue value-based quest anyway.
+
+- “Victory” is:
+  - Anxiety still exists,
+  - but no longer controls behavior.
+
+---
+
+### 5.5. Everyday Happiness Traps
+
+Small traps that offer immediate pleasure but pull the hero away from values:
+
+- **Comfort Cloud** – a soft cloud where the hero can rest and “feel good now”, but:
+  - time skips,
+  - important quests are delayed.
+
+- **Mirror of Social Comparison** – shows other heroes’ “perfect lives”:
+  - stepping into it triggers feelings of envy and inferiority,
+  - the hero may start chasing someone else’s values.
+
+The game shows consequences:
+
+- resources lost,
+- progress toward own values stalled.
+
+But it also always offers a way back:
+
+- recognition: “This is a happiness trap,”
+- and a chance to take a new **toward move**.
+
+---
+
+## 6. Progress Tracking: Toward Moves vs Away Moves
+
+Progress is tracked not just via levels, but via **behavioral choices**.
+
+Any meaningful moment in the game is a **Choice Point**:
+
+- the player either takes a **Toward Move** (toward values),
+- or an **Away Move** (away from values, into avoidance or comfort).
+
+### 6.1. Choice Points
+
+In quests:
+
+- A situation is marked as a **Choice Point**.
+- Example:
+  - Help a friend (Relationships value) vs. avoid him out of fear of rejection.
+
+- If the player chooses the value-consistent action **despite discomfort**:
+  - it counts as a **Toward Move**,
+  - the player gets:
+    - XP,
+    - Values Alignment increase,
+    - possibly a special **Value Token**.
+
+- If the player chooses avoidance:
+  - short-term relief,
+  - but long-term cost:
+    - slight drop in Values Alignment,
+    - states like **Regret** or **Guilt**,
+    - eventual reappearance of similar situations.
+
+---
+
+### 6.2. Values Journal
+
+The game contains a **Values Journal** which acts both as:
+
+- an in-game diary,
+- and a reflection tool.
+
+At the end of each in-game (or real) day:
+
+- the player marks:
+  - which actions were **Toward Moves**,
+  - which were **Away Moves**,
+  - and which values they served or avoided.
+
+- UI:
+  - graphs,
+  - bull’s eye target,
+  - charts per value (Family, Work, Health, etc.).
+
+This encourages:
+
+- building awareness of daily choices,
+- developing a habit of checking against values.
+
+---
+
+### 6.3. Stats & Achievements
+
+The game keeps counters for:
+
+- total **Toward Moves**,
+- total **Away Moves**.
+
+Achievements examples:
+
+- **“Values Champion I”** – 7 days in a row with more Toward than Away moves.
+- **“Mindful Responder”** – 50 moments where the player noticed an avoidance impulse and chose a small Toward Move instead.
+
+If a streak breaks:
+
+- the game responds with **support**, not punishment:
+  - “Everyone makes away moves sometimes. What matters is your next step.”
+
+---
+
+### 6.4. Adaptive Feedback
+
+If the player does many Away Moves in a row:
+
+- the story adapts:
+  - a mentor NPC appears,
+  - offers a quest like **“Small Steps Forward”**:
+    - propose tiny, manageable toward actions to rebuild confidence.
+
+If the player keeps making Toward Moves:
+
+- they may unlock positive events:
+  - NPCs expressing gratitude,
+  - new opportunities that “unexpectedly” appear as a result of sustained valued action.
+
+This keeps the focus on:
+
+- direction (values),
+- patterns (toward/away),
+- and growth of **Psychological Flexibility** over time.
+
+---
+
+This design turns ACT and _The Happiness Trap_ into a **playable metaphor**:
+
+- **Values** → main axis of the game world
+- **ACT processes** → character skills and stats
+- **Internal struggles** → monsters and traps
+- **Toward/Away moves** → core behavior mechanic and progress metric
+
+The goal: help the player experience, through gameplay, what it means to **accept inner demons and follow their heart**, one quest at a time.
