@@ -4,8 +4,11 @@ import * as dotenv from 'dotenv'
 // Load environment variables from .env.local for CLI usage
 dotenv.config({ path: '.env.local' })
 
-if (!process.env.POSTGRES_URL) {
-	throw new Error('POSTGRES_URL environment variable is not set')
+const databaseUrl =
+	process.env.DATABASE_URL || process.env.POSTGRES_URL || ''
+
+if (!databaseUrl) {
+	throw new Error('DATABASE_URL environment variable is not set')
 }
 
 export default defineConfig({
@@ -13,7 +16,7 @@ export default defineConfig({
 	out: './drizzle',
 	dialect: 'postgresql',
 	dbCredentials: {
-		url: process.env.POSTGRES_URL,
+		url: databaseUrl,
 	},
 })
 

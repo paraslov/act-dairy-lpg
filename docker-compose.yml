@@ -1,21 +1,20 @@
 version: '3.8'
 
 services:
-	postgres:
-		image: postgres:16-alpine
-		container_name: act-dairy-lpg-postgres
-		restart: unless-stopped
-	ports:
-		- '5434:5432'
-		environment:
-			POSTGRES_USER: act_dairy_user
-			POSTGRES_PASSWORD: act_dairy_password
-			POSTGRES_DB: act_dairy_db
-		volumes:
-			- ./.docker/postgres-data:/var/lib/postgresql/data
-		healthcheck:
-			test: ['CMD-SHELL', 'pg_isready -U act_dairy_user -d act_dairy_db']
-			interval: 10s
-			timeout: 5s
-			retries: 5
-
+  postgres:
+    image: postgres:16-alpine
+    container_name: act-dairy-lpg-postgres
+    restart: unless-stopped
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: act_dairy_user
+      POSTGRES_PASSWORD: act_dairy_password
+      POSTGRES_DB: act_dairy_db
+    volumes:
+      - ./.docker/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U act_dairy_user -d act_dairy_db']
+      interval: 10s
+      timeout: 5s
+      retries: 5
