@@ -3,8 +3,19 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
 import { DiaryNoteEditor } from './diary-note-editor'
 import { Pencil, Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 interface DiaryNote {
 	id: string
@@ -36,12 +47,9 @@ export function DiaryNoteCard({
 }: DiaryNoteCardProps) {
 	const [isEditing, setIsEditing] = useState(false)
 	const [isDeleting, setIsDeleting] = useState(false)
+	const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
 	const handleDelete = async () => {
-		if (!confirm('Are you sure you want to delete this note?')) {
-			return
-		}
-
 		setIsDeleting(true)
 		try {
 			const response = await fetch(`/api/diary/notes/${note.id}`, {
@@ -52,10 +60,11 @@ export function DiaryNoteCard({
 				throw new Error('Failed to delete note')
 			}
 
+			setShowDeleteDialog(false)
 			onDelete()
 		} catch (error) {
 			console.error('Error deleting note:', error)
-			alert('Failed to delete note')
+			toast.error('Failed to delete note. Please try again.')
 		} finally {
 			setIsDeleting(false)
 		}
@@ -82,57 +91,81 @@ export function DiaryNoteCard({
 	}
 
 	return (
-		<div className="rounded-lg border p-4 space-y-3">
-			<div className="flex items-start justify-between gap-2">
-				<div className="flex-1 space-y-2">
-					{note.timeOfDay && (
-						<div className="text-xs text-muted-foreground">
-							{formatTime(note.timeOfDay)}
+		<>
+			<div className="rounded-lg border p-4 space-y-3">
+				<div className="flex items-start justify-between gap-2">
+					<div className="flex-1 space-y-2">
+						{note.timeOfDay && (
+							<div className="text-xs text-muted-foreground">
+								{formatTime(note.timeOfDay)}
+							</div>
+						)}
+						<div className="text-sm whitespace-pre-wrap">{note.content}</div>
+						<div className="flex flex-wrap gap-2">
+							{note.questTitle && (
+								<Badge variant="secondary">{note.questTitle}</Badge>
+							)}
+							{note.subValueName && note.relationType && (
+								<Badge
+									variant={
+										note.relationType === 'ALIGNED' ? 'default' : 'destructive'
+									}
+								>
+									{note.subValueName} — {note.relationType.toLowerCase()}
+								</Badge>
+							)}
+							{note.moveType && (
+								<Badge
+									variant={note.moveType === 'TOWARD' ? 'default' : 'outline'}
+								>
+									{note.moveType === 'TOWARD' ? 'Toward' : 'Away'} Move
+								</Badge>
+							)}
 						</div>
-					)}
-					<div className="text-sm whitespace-pre-wrap">{note.content}</div>
-					<div className="flex flex-wrap gap-2">
-						{note.questTitle && (
-							<Badge variant="secondary">{note.questTitle}</Badge>
-						)}
-						{note.subValueName && note.relationType && (
-							<Badge
-								variant={
-									note.relationType === 'ALIGNED' ? 'default' : 'destructive'
-								}
-							>
-								{note.subValueName} — {note.relationType.toLowerCase()}
-							</Badge>
-						)}
-						{note.moveType && (
-							<Badge
-								variant={note.moveType === 'TOWARD' ? 'default' : 'outline'}
-							>
-								{note.moveType === 'TOWARD' ? 'Toward' : 'Away'} Move
-							</Badge>
-						)}
+					</div>
+					<div className="flex gap-1">
+						<Button
+							variant="ghost"
+							size="icon"
+							onClick={() => setIsEditing(true)}
+							className="h-8 w-8"
+						>
+							<Pencil className="h-4 w-4" />
+						</Button>
+						<Button
+							variant="ghost"
+							size="icon"
+							onClick={() => setShowDeleteDialog(true)}
+							disabled={isDeleting}
+							className="h-8 w-8 text-destructive hover:text-destructive"
+						>
+							<Trash2 className="h-4 w-4" />
+						</Button>
 					</div>
 				</div>
-				<div className="flex gap-1">
-					<Button
-						variant="ghost"
-						size="icon"
-						onClick={() => setIsEditing(true)}
-						className="h-8 w-8"
-					>
-						<Pencil className="h-4 w-4" />
-					</Button>
-					<Button
-						variant="ghost"
-						size="icon"
-						onClick={handleDelete}
-						disabled={isDeleting}
-						className="h-8 w-8 text-destructive hover:text-destructive"
-					>
-						<Trash2 className="h-4 w-4" />
-					</Button>
-				</div>
 			</div>
-		</div>
+
+			<AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle>Delete Note</AlertDialogTitle>
+						<AlertDialogDescription>
+							Are you sure you want to delete this note? This action cannot be
+							undone.
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+						<AlertDialogAction
+							onClick={handleDelete}
+							disabled={isDeleting}
+							className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+						>
+							{isDeleting ? 'Deleting...' : 'Delete'}
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
+		</>
 	)
 }
