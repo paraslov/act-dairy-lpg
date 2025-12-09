@@ -46,13 +46,6 @@ export function Topbar() {
 						<Shield className="h-5 w-5" />
 						<span className="text-sm font-medium">ACT LPG</span>
 					</div>
-					<Button
-						variant="secondary"
-						size="sm"
-						className="h-8 text-xs font-medium"
-					>
-						Default Project
-					</Button>
 					<nav className="flex items-center gap-1">
 						<Button
 							variant="ghost"

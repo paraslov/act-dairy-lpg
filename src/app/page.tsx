@@ -5,6 +5,7 @@ import { KnightOathBanner } from '@/components/home/knight-oath-banner'
 import { MilestonesBar } from '@/components/home/milestones-bar'
 import { QuestsList } from '@/components/home/quests-list'
 import type { Quest } from '@/components/home/quest-card'
+import { useAuth } from '@/hooks/use-auth'
 
 const mockQuests: Quest[] = [
 	{
@@ -39,6 +40,8 @@ const mockQuests: Quest[] = [
 ]
 
 export default function Home() {
+	const { user, isLoading } = useAuth()
+
 	const handleQuestStart = (id: string) => {
 		console.log('Start quest:', id)
 	}
@@ -51,15 +54,17 @@ export default function Home() {
 		console.log('Swap quest:', id)
 	}
 
+	const displayName = isLoading ? 'Loading...' : user?.name || 'Default Project'
+
 	return (
-		<div className="flex min-h-screen flex-col bg-background">
+		<div className="bg-background flex min-h-screen flex-col">
 			<Topbar />
 			<main className="container mx-auto flex-1 px-6 py-8">
 				<div className="mb-8">
 					<h1 className="text-3xl font-bold tracking-tight">
-						Home · Default Project
+						Home · {displayName}
 					</h1>
-					<p className="mt-2 text-sm text-muted-foreground">
+					<p className="text-muted-foreground mt-2 text-sm">
 						View your daily quests and track your progress
 					</p>
 				</div>
