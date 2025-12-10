@@ -586,6 +586,62 @@ export const xpHistory = pgTable(
 )
 
 // ============================================================================
+// Game Balance Configuration Tables
+// ============================================================================
+
+// Game Balance Config - Global balance configuration
+export const gameBalanceConfig = pgTable(
+	'game_balance_config',
+	{
+		id: text('id').primaryKey(),
+		config: jsonb('config').notNull(),
+		isActive: boolean('is_active').notNull().default(false),
+		version: integer('version').notNull().default(1),
+		createdAt: timestamp('created_at').defaultNow().notNull(),
+		updatedAt: timestamp('updated_at').defaultNow().notNull(),
+		createdBy: text('created_by')
+			.notNull()
+			.references(() => users.id, { onDelete: 'restrict' }),
+	},
+	table => ({
+		activeConfigIdx: index('game_balance_config_is_active_idx').on(
+			table.isActive
+		),
+		// Note: Partial unique index for isActive=true will be created manually in migration
+		// For now, we enforce uniqueness in the service layer
+	})
+)
+
+// Game Balance Config History - Audit trail of configuration changes
+export const gameBalanceConfigHistory = pgTable(
+	'game_balance_config_history',
+	{
+		id: text('id').primaryKey(),
+		configId: text('config_id')
+			.notNull()
+			.references(() => gameBalanceConfig.id, { onDelete: 'cascade' }),
+		oldConfig: jsonb('old_config').notNull(),
+		newConfig: jsonb('new_config').notNull(),
+		changedBy: text('changed_by')
+			.notNull()
+			.references(() => users.id, { onDelete: 'restrict' }),
+		changeReason: text('change_reason'),
+		createdAt: timestamp('created_at').defaultNow().notNull(),
+	},
+	table => ({
+		configIdIdx: index('game_balance_config_history_config_id_idx').on(
+			table.configId
+		),
+		changedByIdx: index('game_balance_config_history_changed_by_idx').on(
+			table.changedBy
+		),
+		createdAtIdx: index('game_balance_config_history_created_at_idx').on(
+			table.createdAt
+		),
+	})
+)
+
+// ============================================================================
 // Export types for use in your application
 // ============================================================================
 
@@ -648,3 +704,11 @@ export type GlobalProgress = typeof globalProgress.$inferSelect
 export type NewGlobalProgress = typeof globalProgress.$inferInsert
 export type XpHistory = typeof xpHistory.$inferSelect
 export type NewXpHistory = typeof xpHistory.$inferInsert
+
+// Game Balance Configuration types
+export type GameBalanceConfig = typeof gameBalanceConfig.$inferSelect
+export type NewGameBalanceConfig = typeof gameBalanceConfig.$inferInsert
+export type GameBalanceConfigHistory =
+	typeof gameBalanceConfigHistory.$inferSelect
+export type NewGameBalanceConfigHistory =
+	typeof gameBalanceConfigHistory.$inferInsert

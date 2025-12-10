@@ -1,6 +1,13 @@
 'use client'
 
-import { Shield, Home, LogOut, User as UserIcon, BookOpen } from 'lucide-react'
+import {
+	Shield,
+	Home,
+	LogOut,
+	User as UserIcon,
+	BookOpen,
+	Settings,
+} from 'lucide-react'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { Button } from '@/components/ui/button'
 import {
@@ -69,6 +76,19 @@ export function Topbar() {
 								Diary
 							</Link>
 						</Button>
+						{user?.role === 'ADMIN' && (
+							<Button
+								variant="ghost"
+								size="sm"
+								className="h-8 gap-1.5 text-xs font-medium"
+								asChild
+							>
+								<Link href="/admin">
+									<Settings className="h-3.5 w-3.5" />
+									Admin
+								</Link>
+							</Button>
+						)}
 					</nav>
 				</div>
 				<div className="flex items-center gap-2">

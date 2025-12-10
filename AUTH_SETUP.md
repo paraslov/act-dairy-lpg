@@ -36,6 +36,11 @@ BETTER_AUTH_URL=http://localhost:3000
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
+# Admin User (for seed script - optional)
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=your-secure-password
+ADMIN_NAME=Admin
+
 # App URL for client-side auth
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
@@ -213,7 +218,36 @@ export default async function AdminPage() {
 
 ## Creating the First Admin User
 
-Since new users are created with the `USER` role by default, you'll need to manually promote the first user to `ADMIN`:
+Since new users are created with the `USER` role by default, you'll need to create an admin user. The easiest way is to use the provided seed script:
+
+### Using the Seed Script (Recommended)
+
+1. Add the following environment variables to your `.env.local` file:
+
+```env
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=your-secure-password
+ADMIN_NAME=Admin  # Optional, defaults to "Admin"
+```
+
+2. Run the seed script:
+
+```bash
+pnpm db:seed:admin
+```
+
+The script will:
+
+- Create an admin user with the specified email and password
+- Set the user's role to `ADMIN`
+- Mark the email as verified
+- Create the necessary account record for authentication
+
+**Note:** The script is idempotent - if an admin user with the same email already exists, it will skip creation. If a regular user with that email exists, it will be promoted to admin.
+
+### Alternative: Manual Database Update
+
+If you prefer to create the admin user manually:
 
 1. Sign up for a new account through the UI
 2. Connect to your database and run:
@@ -221,8 +255,6 @@ Since new users are created with the `USER` role by default, you'll need to manu
 ```sql
 UPDATE users SET role = 'ADMIN' WHERE email = 'your-email@example.com';
 ```
-
-Alternatively, you can create a seed script or admin setup command.
 
 ## Security Considerations
 
