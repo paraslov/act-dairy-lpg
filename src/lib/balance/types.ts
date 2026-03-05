@@ -32,6 +32,18 @@ export interface StatsConfig {
 	shadowMitigationFactor: number // Factor for shadow XP mitigation (e.g., 0.1 = 10%)
 }
 
+export interface QuestRewardConfig {
+	easyXp: number
+	mediumXp: number
+	hardXp: number
+}
+
+export interface DailyMilestonesConfig {
+	easyProgressPercent: number
+	mediumProgressPercent: number
+	hardProgressPercent: number
+}
+
 export interface RankPointMap {
 	Common: number
 	Rare: number
@@ -57,5 +69,7 @@ export interface GameBalanceConfig {
 	coreValueConfig: CoreValueConfig
 	pathLevelConfig: PathLevelConfig
 	statsConfig: StatsConfig
+	questRewardConfig: QuestRewardConfig
+	dailyMilestonesConfig: DailyMilestonesConfig
 	integrityWeights: IntegrityRatingWeights
 }

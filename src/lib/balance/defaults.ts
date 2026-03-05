@@ -31,6 +31,16 @@ export const defaultBalanceConfig: GameBalanceConfig = {
 		xpPerPoint: 50,
 		shadowMitigationFactor: 0.1,
 	},
+	questRewardConfig: {
+		easyXp: 1,
+		mediumXp: 2,
+		hardXp: 3,
+	},
+	dailyMilestonesConfig: {
+		easyProgressPercent: 5,
+		mediumProgressPercent: 10,
+		hardProgressPercent: 15,
+	},
 	integrityWeights: {
 		pathLevel: 10,
 		shadowPathLevel: -10,

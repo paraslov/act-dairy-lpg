@@ -44,6 +44,11 @@ export const valueRelationTypeEnum = pgEnum('value_relation_type', [
 	'ALIGNED',
 	'VIOLATED',
 ])
+export const questDifficultyEnum = pgEnum('quest_difficulty', [
+	'EASY',
+	'MEDIUM',
+	'HARD',
+])
 export const xpEntityTypeEnum = pgEnum('xp_entity_type', [
 	'GLOBAL',
 	'SUB_VALUE',
@@ -215,6 +220,8 @@ export const questDefinitions = pgTable(
 		title: text('title').notNull(),
 		description: text('description'),
 		direction: questDirectionEnum('direction').notNull(),
+		difficulty: questDifficultyEnum('difficulty').notNull().default('EASY'),
+		duration: integer('duration'),
 		recurrencePattern: recurrencePatternEnum('recurrence_pattern')
 			.notNull()
 			.default('NONE'),
@@ -511,6 +518,7 @@ export const subValueProgress = pgTable(
 			.notNull()
 			.references(() => subValues.id, { onDelete: 'cascade' }),
 		currentXp: bigint('current_xp', { mode: 'number' }).notNull().default(0),
+		shadowXp: bigint('shadow_xp', { mode: 'number' }).notNull().default(0),
 		currentLevel: integer('current_level').notNull().default(1),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},
@@ -536,6 +544,7 @@ export const globalProgress = pgTable(
 			.unique()
 			.references(() => users.id, { onDelete: 'cascade' }),
 		currentXp: bigint('current_xp', { mode: 'number' }).notNull().default(0),
+		shadowXp: bigint('shadow_xp', { mode: 'number' }).notNull().default(0),
 		currentLevel: integer('current_level').notNull().default(1),
 		updatedAt: timestamp('updated_at').defaultNow().notNull(),
 	},

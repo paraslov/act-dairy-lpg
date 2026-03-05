@@ -7,44 +7,53 @@ import { Plus } from 'lucide-react'
 
 interface QuestsListProps {
 	quests: Quest[]
-	onStart?: (id: string) => void
-	onEdit?: (id: string) => void
-	onSwap?: (id: string) => void
+	onComplete?: (id: string) => void
+	onAddQuest?: () => void
+	isLoading?: boolean
 }
 
 export function QuestsList({
 	quests,
-	onStart,
-	onEdit,
-	onSwap,
+	onComplete,
+	onAddQuest,
+	isLoading,
 }: QuestsListProps) {
 	return (
 		<Card className="border">
 			<CardHeader className="pb-3">
 				<div className="flex items-center justify-between">
 					<h3 className="text-sm font-medium">Today&apos;s Quests</h3>
-					<Button size="sm" variant="outline" className="h-8 gap-1.5 text-xs">
+					<Button
+						size="sm"
+						variant="outline"
+						className="h-8 gap-1.5 text-xs"
+						onClick={onAddQuest}
+					>
 						<Plus className="h-3.5 w-3.5" />
 						Add Quest
 					</Button>
 				</div>
 			</CardHeader>
 			<CardContent>
-				{quests.length === 0 ? (
+				{isLoading ? (
 					<div className="rounded-lg border border-dashed p-8 text-center">
-						<p className="text-sm text-muted-foreground">
-							No quests selected for today. Add some quests to get started!
+						<p className="text-muted-foreground text-sm">
+							Loading quests...
+						</p>
+					</div>
+				) : quests.length === 0 ? (
+					<div className="rounded-lg border border-dashed p-8 text-center">
+						<p className="text-muted-foreground text-sm">
+							No quests for today. Add some quests to get started!
 						</p>
 					</div>
 				) : (
 					<div className="space-y-3">
-						{quests.map((quest) => (
+						{quests.map(quest => (
 							<QuestCard
 								key={quest.id}
 								quest={quest}
-								onStart={onStart}
-								onEdit={onEdit}
-								onSwap={onSwap}
+								onComplete={onComplete}
 							/>
 						))}
 					</div>
@@ -53,4 +62,3 @@ export function QuestsList({
 		</Card>
 	)
 }
-

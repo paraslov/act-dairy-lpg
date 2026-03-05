@@ -7,10 +7,10 @@ interface MilestonesBarProps {
 	currentProgress?: number
 }
 
-const milestones = [0, 30, 60, 90, 110]
+const milestones = [0, 25, 50, 75, 100]
 
-export function MilestonesBar({ currentProgress = 45 }: MilestonesBarProps) {
-	const progressPercentage = Math.min(Math.max(currentProgress, 0), 110)
+export function MilestonesBar({ currentProgress = 0 }: MilestonesBarProps) {
+	const progressPercentage = Math.min(Math.max(currentProgress, 0), 100)
 
 	return (
 		<Card className="border">

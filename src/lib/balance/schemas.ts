@@ -9,6 +9,8 @@ import type {
 	CoreValueConfig,
 	PathLevelConfig,
 	StatsConfig,
+	QuestRewardConfig,
+	DailyMilestonesConfig,
 	IntegrityRatingWeights,
 	RankPointMap,
 } from './types'
@@ -66,6 +68,21 @@ export const statsConfigSchema: z.ZodType<StatsConfig> = z.object({
 	shadowMitigationFactor: z.number().min(0).max(1),
 })
 
+// Quest Reward Config Schema
+export const questRewardConfigSchema: z.ZodType<QuestRewardConfig> = z.object({
+	easyXp: z.number().int().positive().min(1),
+	mediumXp: z.number().int().positive().min(1),
+	hardXp: z.number().int().positive().min(1),
+})
+
+// Daily Milestones Config Schema
+export const dailyMilestonesConfigSchema: z.ZodType<DailyMilestonesConfig> =
+	z.object({
+		easyProgressPercent: z.number().min(0).max(100),
+		mediumProgressPercent: z.number().min(0).max(100),
+		hardProgressPercent: z.number().min(0).max(100),
+	})
+
 // Rank Point Map Schema
 export const rankPointMapSchema: z.ZodType<RankPointMap> = z.object({
 	Common: z.number().min(0),
@@ -95,5 +112,7 @@ export const gameBalanceConfigSchema: z.ZodType<GameBalanceConfig> = z.object({
 	coreValueConfig: coreValueConfigSchema,
 	pathLevelConfig: pathLevelConfigSchema,
 	statsConfig: statsConfigSchema,
+	questRewardConfig: questRewardConfigSchema,
+	dailyMilestonesConfig: dailyMilestonesConfigSchema,
 	integrityWeights: integrityRatingWeightsSchema,
 })
